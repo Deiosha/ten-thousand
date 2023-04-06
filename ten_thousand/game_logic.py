@@ -19,44 +19,61 @@ class GameLogic:
     :return:
     """
 
-    # score = 0
-    # count_pair = 0
-    # count = Counter(roll).most_common()
-    # num = len(count)
-    # # for num in range(0, len(count)):
-    # return tuple(random.randint(1, 6) for _ in range(roll))
+    @staticmethod
+    def calculate_score(roll):
 
-    def calculate_score(t):
-        if len(t) == 1:
-            if t[0] == 5:
-                return 50
-            else:
-                return t[0] * 100
-        elif len(set(t)) == 1:
-            return len(t) * t[0] * 1000
-        elif set(t) == {2}:
-            return len(t) * 200
-        elif set(t) == {3}:
-            return len(t) * 300
-        elif set(t) == {4}:
-            return len(t) * 400
-        elif set(t) == {6}:
-            return len(t) * 600
-        elif set(t) == {1, 2, 3, 4, 5, 6} and sorted(t) == [1, 2, 3, 4, 5, 6]:
-            return 1500
-        else:
-            return 0
+        score = 0
+        count_pair = 0
+        count = Counter(roll).most_common()
+        num = len(count)
+        for num in range(0, len(count)):
+            #  ones
+            if count[num][0] == 1 and count[num][1] <= 2:
+                score += 100 * count[num][1]
 
-        # generate a tuple of six random integers in the range 1-6
+            if count[num][0] == 1 and count[num][1] >= 4:
+                score += 1000 * (count[num][1] - 2)
 
-    t = tuple(random.randint(1, 6) for i in range(6))
+            if count[num][0] == 1 and count[num][1] == 3:
+                score += 1000
 
-    # calculate the value of the tuple using the calculate_value() function
-    value = calculate_score(t)
+            # twos
+            if count[num][0] == 2 and count[num][1] >= 3:
+                score += 200 * (count[num][1] - 2)
 
-    # print the tuple and its corresponding value
-    print(f"Tuple: {t}")
-    print(f"Value: {value}")
+             # threes
+            if count[num][0] == 3 and count[num][1] >= 3:
+                score += 300 * (count[num][1] - 2)
+
+            # fours
+            if count[num][0] == 4 and count[num][1] >= 3:
+                score += 400 * (count[num][1] - 2)
+
+            # fives
+            if count[num][0] == 5 and count[num][1] <= 2:
+                score += 50 * count[num][1]
+
+            # Add condition for three fives
+            if count[num][0] == 5 and count[num][1] == 3:
+               score += 500
+
+            if count[num][0] == 5 and count[num][1] > 3:
+                score += 500 * (count[num][1] - 2)
+
+            # sixes
+            if count[num][0] == 6 and count[num][1] >= 3:
+                score += 600 * (count[num][1] - 2)
+
+            # three pair
+            if len(count) == 3:
+                if count[0][1] == 2 and count[1][1] == 2 and count[2][1] == 2:
+                    score = 1500
+
+            # straight
+            if len(count) == 6:
+                score = 1500
+
+        return score
 
 
 if __name__ == "__main__":

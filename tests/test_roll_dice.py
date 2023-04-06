@@ -57,6 +57,5 @@ def test_6_dice():
         assert 1 <= value <= 6
 
 
-# new test
 
 
