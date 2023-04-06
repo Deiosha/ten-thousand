@@ -9,8 +9,6 @@ import pytest
 # from ten_thousand.game_logic import GameLogic
 from ten_thousand.game_logic import GameLogic
 
-pytestmark = [pytest.mark.version_1]
-
 
 def test_1_dice():
     values = GameLogic.roll_dice(1)
@@ -57,3 +55,8 @@ def test_6_dice():
 
     for value in values:
         assert 1 <= value <= 6
+
+
+# new test
+
+

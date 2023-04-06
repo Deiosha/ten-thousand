@@ -13,8 +13,7 @@ class GameLogic:
         """
         return tuple(random.randint(1, 6) for _ in range(n))
 
-
-def calculate_score(roll):
+    # def calculate_score(roll):
     """
     :param roll:
     :return:
@@ -27,7 +26,7 @@ def calculate_score(roll):
     # # for num in range(0, len(count)):
     # return tuple(random.randint(1, 6) for _ in range(roll))
 
-    def calculate_value(t):
+    def calculate_score(t):
         if len(t) == 1:
             if t[0] == 5:
                 return 50
@@ -48,11 +47,12 @@ def calculate_score(roll):
         else:
             return 0
 
-    # generate a tuple of six random integers in the range 1-6
+        # generate a tuple of six random integers in the range 1-6
+
     t = tuple(random.randint(1, 6) for i in range(6))
 
     # calculate the value of the tuple using the calculate_value() function
-    value = calculate_value(t)
+    value = calculate_score(t)
 
     # print the tuple and its corresponding value
     print(f"Tuple: {t}")
