@@ -92,6 +92,8 @@ def test_six_ones():
     assert actual == expected
 
 
+# Our new test:
+
 def test_three_ones_three_fives():
     actual = GameLogic.calculate_score((1, 1, 1, 5, 5, 5))
     expected = 1500

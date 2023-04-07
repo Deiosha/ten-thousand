@@ -57,5 +57,20 @@ def test_6_dice():
         assert 1 <= value <= 6
 
 
+# new test
+def test_0_dice():
+    values = GameLogic.roll_dice(0)
+    assert len(values) == 13
+    # for value in values:
+    assert values == "Stop Cheating"
+
+
+def test_7_dice():
+    values = GameLogic.roll_dice(7)
+    assert len(values) == 13
+
+    # for value in values:
+    assert values == "Stop Cheating"
+
 
 
