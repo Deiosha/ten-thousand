@@ -98,12 +98,34 @@ class GameLogic:
         # return the value of score
         return score
 
+    @staticmethod
+    def play():
+        print("Welcome to Ten Thousand")
+        while True:
+            print("(y)es to play or (n)o to quit")
+            player_input = input("> ")
+            if player_input == "n":
+                GameLogic.quit()
+                break
+            elif player_input == "y":
+                GameLogic.roll_dice(3)
+
+    @staticmethod
+    def quit(score=0, count=0):
+        if count == 0:
+            print("OK. Maybe another time")
+        else:
+            print(f"Thanks for playing! You earned {score} points")
+        pass
+
 
 if __name__ == "__main__":
     # declare new variable dice_roll and set it = the results of GameLogic.roll_dice with an int argument of 6
-    dice_roll = GameLogic.roll_dice(7)
-    # print the value of dice_roll to stdout
-    print(dice_roll)
-    # print the returned score value from GameLogic.calculate_score(dice_roll) to stdout
-    print(GameLogic.calculate_score(dice_roll))
-    print(len("Stop Cheating"))
+    # dice_roll = GameLogic.roll_dice(7)
+    # # print the value of dice_roll to stdout
+    # print(dice_roll)
+    # # print the returned score value from GameLogic.calculate_score(dice_roll) to stdout
+    # print(GameLogic.calculate_score(dice_roll))
+    # print(len("Stop Cheating"))
+
+    GameLogic.play()
