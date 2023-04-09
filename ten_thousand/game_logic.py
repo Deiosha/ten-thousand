@@ -122,7 +122,7 @@ class GameLogic:
             else:
                 print("(r)oll again, (b)ank your points or (q)uit:")
                 player_input = input("> ")
-                if player_input == "q" or count == 4 or dice_qty == 0:
+                if player_input == "q":
                     GameLogic.quit(count=count, score=score)
                     break
                 elif player_input == "r":
@@ -140,12 +140,15 @@ class GameLogic:
             GameLogic.roll_dice(dice_qty)
             print("Enter dice to keep, or (q)uit:")
             banked_dice = input("> ")
-            if player_input == "q":
+            if banked_dice == "q":
                 GameLogic.quit(count=count, score=score)
-            dice_qty -= len(banked_dice)
-            scoring_dice = tuple(int(digit) for digit in banked_dice)
-            score += GameLogic.calculate_score(scoring_dice)
-            print(f"You have {score} unbanked points and {dice_qty} dice remaining")
+                break
+            else:
+                # dice_qty -= len(banked_dice)
+                scoring_dice = tuple(int(digit) for digit in banked_dice)
+                score += GameLogic.calculate_score(scoring_dice)
+                print(f"You have {score} unbanked points and {dice_qty} dice remaining")
+
             # print(f"Your total score is {score}")
 
     @staticmethod
